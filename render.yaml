@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: odysseus
+    runtime: python
+    pythonVersion: "3.12"
+    buildCommand: pip install -r requirements.txt
+    startCommand: bash start-cloud.sh
+    healthCheckPath: /api/auth/status
+    envVars:
+      - key: DATABASE_URL
+        value: sqlite:///./data/app.db
+      - key: ODYSSEUS_ADMIN_PASSWORD
+        value: Odyssey@2025
+      - key: ALLOWED_ORIGINS
+        value: "*"
