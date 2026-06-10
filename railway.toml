@@ -1,0 +1,12 @@
+[build]
+builder = "nixpacks"
+
+[build.env]
+NIXPACKS_PYTHON_VERSION = "3.12"
+
+[deploy]
+startCommand = "bash start-cloud.sh"
+healthcheckPath = "/api/auth/status"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
